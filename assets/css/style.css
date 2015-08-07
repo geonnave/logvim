@@ -1,0 +1,19 @@
+
+.loglines .content {
+  /*width: 1600;*/
+  height: 700px; 
+  max-width: 5000px;
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+
+.loglines .content table {
+  /*width: 1600;*/
+  max-width: 5000px;
+  /*overflow-y: scroll;*/
+  overflow-x: scroll;
+  empty-cells: show;
+}
+.loglines .content table tr {
+  height: 20px;
+}

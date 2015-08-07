@@ -80,7 +80,6 @@ AdbServer.prototype.devices = function(callback) {
 }
 
 AdbServer.prototype.logcat = function(callback) {
-    
     var main = this.cmd(['logcat', '-v', 'threadtime', '-b', 'main']);
     var system = this.cmd(['logcat', '-v', 'threadtime', '-b', 'system']);
     var radio = this.cmd(['logcat', '-v', 'threadtime', '-b', 'radio']);
@@ -115,7 +114,16 @@ AdbServer.prototype.logcat = function(callback) {
     crash.on('stdline', function(line) {onLogLine('crash', line)});  
     events.on('stdline', function(line) {onLogLine('events', line)});  
     kernel.on('stdline', function(line) {onLogLine('kernel', line)});  
+}
 
+AdbServer.prototype.logcat_raw = function(callback) {
+    var all_logs = this.cmd(['logcat', '-v', 'time']);//, '-b', 'system', '-b', 'radio', '-b', 'crash', '-b', 'events', '-b', 'kernel']);
+
+    var onLogLine = function(buffer, line) {
+        callback(line);
+    };
+
+    all_logs.on('stdline', function(line) {onLogLine('all_logs', line)});
 }
 
 AdbServer.prototype.cmd = function(cmd) {

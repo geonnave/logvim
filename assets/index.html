@@ -2,11 +2,28 @@
 <html>
   <head>
     <title>Hello World!</title>
+    <link href="css/style.css" media="screen" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using io.js <script>document.write(process.version)</script>
-    and Electron <script>document.write(process.versions['electron'])</script>.
+    <div class="header">
+      <!-- <h1>Hello World!</h1> -->
+    </div>
+    <div class="loglines">
+      <div class="description">
+        Buffer | Date | Time | Tag | Message
+      </div>
+      <div class="content">
+        <div class="before-table"></div>
+        <table class="content-table">
+          <!-- <thead><tr><td> </td><td> </td><td> </td><td> </td><td> </td></tr></thead> -->
+          <!-- <tfoot><tr><td> </td><td> </td><td> </td><td> </td><td> </td></tr></tfoot> -->
+          <tbody class="logcatbody">
+            <tr></tr>
+          </tbody>
+        </table>
+        <div class="after-table"></div>
+      </div>
+    </div>
     <script>
     	require('./js/index.js')
     </script>
