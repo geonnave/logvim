@@ -1,19 +1,99 @@
 
-.loglines .content {
-  /*width: 1600;*/
-  height: 700px; 
-  max-width: 5000px;
-  overflow-y: scroll;
-  overflow-x: scroll;
+body {
+  background-color: #3F3F3F;
+}
+input {
+  font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+  width: 98%;
+  margin: 0;
+}
+textarea:focus, 
+input[type="text"]:focus {
+  border-color: rgba(126, 239, 104, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(255, 0, 0, 0.6);
+    outline: 0 none;
+}
+select:focus {
+   outline-color: transparent;
 }
 
-.loglines .content table {
-  /*width: 1600;*/
-  max-width: 5000px;
-  /*overflow-y: scroll;*/
+
+.loglines .loglines-fragment {
+  /*width: 1600px;*/
+  height: 300px;
+  max-width: 2000px;
+  overflow-y: scroll;
   overflow-x: scroll;
-  empty-cells: show;
+  background-color: #1B1B1B;
 }
-.loglines .content table tr {
+
+.loglines .loglines-fragment ul.loglines-list-fragment {
+  max-width: 2000px;
+  margin: 0;
+}
+.loglines .loglines-fragment ul li {
   height: 20px;
+  list-style: none;
+}
+.loglines .loglines-fragment .logline {
+  white-space: nowrap;
+}
+
+.loglines .loglines-fragment li {
+  background-color: #1B1B1B;
+  color: #a3a3a3;
+}
+.loglines .loglines-fragment li.level-E {
+  color: #ff5f5f;
+}
+.loglines .loglines-fragment li.level-W {
+  color: #afd700;
+}
+.loglines .loglines-fragment li.level-D {
+  color: #5fafd7;
+}
+.loglines .loglines-fragment li.level-I {
+  color: #00af00;
+}
+
+.loglines .loglines-fragment li:hover {
+  background-color: #4F4F4F;
+}
+
+.loglines .loglines-fragment .logline span {
+  display: inline-block;
+  overflow-x: hidden;
+  margin: 0 2px;
+}
+.loglines .loglines-fragment .logline span.index {
+  width: 50px;
+}
+.loglines .loglines-fragment .logline span.date {
+  width: 40px;
+}
+.loglines .loglines-fragment .logline span.time {
+  width: 90px;
+}
+.loglines .loglines-fragment .logline span.buffer {
+  width: 20px;
+}
+.loglines .loglines-fragment .logline span.tag {
+  width: 200px;
+}
+.loglines .loglines-fragment .logline span.message {
+  /*max-width: 1500px;*/
+}
+
+.cmdline {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+}
+.cmdline .action-dropup {
+  width: 100px;
+  float: left;
+}
+.cmdline .input {
+  width: calc(100% - 100px);
+  float: left;
 }

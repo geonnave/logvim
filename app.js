@@ -8,7 +8,6 @@ require('crash-reporter').start();
 // be closed automatically when the JavaScript object is GCed.
 var mainWindow = null;
 
-// Quit when all windows are closed.
 app.on('window-all-closed', function() {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
@@ -17,19 +16,13 @@ app.on('window-all-closed', function() {
   }
 });
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
 app.on('ready', function() {
-  // Create the browser window.
   mainWindow = new BrowserWindow({width: 1200, height: 900});
 
-  // and load the index.html of the app.
   mainWindow.loadUrl('file://' + __dirname + '/assets/index.html');
 
-  // Open the devtools.
-  // mainWindow.openDevTools();
+  mainWindow.openDevTools();
 
-  // Emitted when the window is closed.
   mainWindow.on('closed', function() {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
@@ -37,4 +30,3 @@ app.on('ready', function() {
     mainWindow = null;
   });
 });
-
