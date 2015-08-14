@@ -13,10 +13,6 @@ function LoglinesFragment(myDocument) {
 	this.measureFragmentSizes();
 
 	this.content.addEventListener("scroll", (function(e) {
-		if (this.scrollY_px < (this.sizeYOfAllPossibleTRs_px-this.contentYSize_px))
-			this.autoScroll = false;
-		else
-			this.autoScroll = true;
 		this.redraw();
 	}).bind(this));
 }
@@ -65,15 +61,15 @@ LoglinesFragment.prototype.redraw = function (now) {
 	if (lastStart == this.start_tr && lastEnd == this.end_tr)
 		return;
 	this.listFragment.innerHTML = this.makeHTML();
-	if (this.autoScroll)
-		this.content.scrollTop = this.content.scrollHeight;
+	// if (?)
+		// this.content.scrollTop = this.content.scrollHeight;
 }
 LoglinesFragment.prototype.makeHTML = function() {
 	var html = '';
 	for (var i = this.start_tr; i < this.end_tr; i++) {
 		html += 
 			'<li class="logline level-'+this.logsToShow[i].level+'">'+
-                '<span class="index">'+i+'</span>'+
+                '<span class="index">'+this.logsToShow[i].index+'</span>'+
                 '<span class="buffer">'+this.logsToShow[i].buffer[0]+'</span>'+
                 '<span class="date">'+this.logsToShow[i].month+'-'+this.logsToShow[i].day+'</span>'+
                 '<span class="time">'+this.logsToShow[i].hour+':'+this.logsToShow[i].minute+':'+this.logsToShow[i].second+'.'+this.logsToShow[i].milisecond+'</span>'+

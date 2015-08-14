@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Hello World!</title>
-    <link href="css/bootstrap.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="vendor/css/bootstrap.css" media="screen" rel="stylesheet" type="text/css">
     <link href="css/style.css" media="screen" rel="stylesheet" type="text/css">
   </head>
   <body>
@@ -10,9 +10,9 @@
       <!-- <h1>Hello World!</h1> -->
     </div>
     <div class="loglines">
-      <div class="description">
+      <!-- <div class="description">
         Buffer | Date | Time | Tag | Message
-      </div>
+      </div> -->
       <div class="loglines-fragment">
         <div class="before-div"></div>
         <ul class="loglines-list-fragment">
@@ -21,16 +21,14 @@
       </div>
     </div>
     <div class="cmdline">
+      <div class="highlight-cmd"></div>
       <div class="dropup action-dropup">
         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropup
           <span class="caret"></span>
+          <span class="name">Filter</span>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li><a href="#">Separated link</a></li>
+          <li><a href="#">Filter</a></li>
         </ul>
       </div>
       <div class="input">
@@ -39,8 +37,8 @@
       <div class="status"></div>
     </div>
     <script>
-      window.$ = window.jQuery = require('./js/jquery.js')
-      require('./js/bootstrap.js')
+      window.$ = window.jQuery = require('./vendor/js/jquery.js')
+      require('./vendor/js/bootstrap.js')
       require('./js/index.js')
     </script>
   </body>

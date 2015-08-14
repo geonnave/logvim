@@ -5,13 +5,13 @@ body {
 input {
   font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
   width: 98%;
-  margin: 0;
+  margin-bottom: 0 !important;
 }
 textarea:focus, 
 input[type="text"]:focus {
   border-color: rgba(126, 239, 104, 0.8);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(255, 0, 0, 0.6);
-    outline: 0 none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(255, 0, 0, 0.6);
+  outline: 0 none;
 }
 select:focus {
    outline-color: transparent;
@@ -25,6 +25,9 @@ select:focus {
   overflow-y: scroll;
   overflow-x: scroll;
   background-color: #1B1B1B;
+}
+.loglines .description {
+  color: #CDCDCD;
 }
 
 .loglines .loglines-fragment ul.loglines-list-fragment {
@@ -86,14 +89,41 @@ select:focus {
 
 .cmdline {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   width: 100%;
 }
+.cmdline .highlight-cmd {
+  height: 30px;
+  width: 11px;
+  position: absolute;
+  bottom: 0px;
+  left: 121px;
+  background-color: rgba(160, 160, 160, 0.52);
+}
 .cmdline .action-dropup {
-  width: 100px;
+  width: 120px;
   float: left;
 }
+.cmdline .action-dropup button {
+  float: right;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-right: 0;
+  padding-left: 5px;
+  width: calc(100% - 10px);
+}
+.cmdline .action-dropup button span.name {
+  padding-right: 8px;
+  padding-left: 4px;
+}
 .cmdline .input {
-  width: calc(100% - 100px);
+  width: calc(100% - 120px);
   float: left;
+}
+/*.cmdline .input textarea*/
+
+.cmdline .input input[type="text"] {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-left: 3px;
 }
