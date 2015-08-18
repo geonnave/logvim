@@ -17,10 +17,19 @@ select:focus {
    outline-color: transparent;
 }
 
-
+.loglines {
+}
 .loglines .loglines-fragment {
   /*width: 1600px;*/
   height: 300px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95%%;
+  max-height: calc(100% - 50px);
+
   max-width: 2000px;
   overflow-y: scroll;
   overflow-x: scroll;
@@ -35,11 +44,22 @@ select:focus {
   margin: 0;
 }
 .loglines .loglines-fragment ul li {
-  height: 20px;
+  height: 18px;
+  line-height: 18px;
+  font-size: 13px;
   list-style: none;
 }
-.loglines .loglines-fragment .logline {
+
+.loglines .loglines-fragment span:hover,
+.loglines .loglines-fragment li:hover {
+  background-color: #4F4F4F;
+}
+.loglines .loglines-fragment li.logline {
   white-space: nowrap;
+}
+.loglines .loglines-fragment li.customTag {
+  white-space: nowrap;
+  background-color: #4F4F8e;
 }
 
 .loglines .loglines-fragment li {
@@ -57,10 +77,6 @@ select:focus {
 }
 .loglines .loglines-fragment li.level-I {
   color: #00af00;
-}
-
-.loglines .loglines-fragment li:hover {
-  background-color: #4F4F4F;
 }
 
 .loglines .loglines-fragment .logline span {

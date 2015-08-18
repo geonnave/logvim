@@ -15,9 +15,9 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
   mainWindow = new BrowserWindow({width: 1200, height: 900});
 
-  mainWindow.loadUrl('file://' + __dirname + '/assets/index.html');
+  mainWindow.loadUrl('file://' + __dirname + '/app/index.html');
 
-  mainWindow.openDevTools();
+  // mainWindow.openDevTools();
 
   mainWindow.on('closed', function() {
     // Dereference the window object, usually you would store windows

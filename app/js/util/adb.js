@@ -108,12 +108,12 @@ AdbServer.prototype.logcat = function(callback) {
         callback(logline);
     };
 
-    main.on('stdline', function(line) {onLogLine('main', line)});  
-    system.on('stdline', function(line) {onLogLine('system', line)});  
-    // radio.on('stdline', function(line) {onLogLine('radio', line)});  
-    // crash.on('stdline', function(line) {onLogLine('crash', line)});  
-    // events.on('stdline', function(line) {onLogLine('events', line)});  
-    // kernel.on('stdline', function(line) {onLogLine('kernel', line)});  
+    main.on('stdline', function(line) {onLogLine('main', line)});
+    system.on('stdline', function(line) {onLogLine('system', line)});
+    // radio.on('stdline', function(line) {onLogLine('radio', line)});
+    // crash.on('stdline', function(line) {onLogLine('crash', line)});
+    // events.on('stdline', function(line) {onLogLine('events', line)});
+    // kernel.on('stdline', function(line) {onLogLine('kernel', line)});
 }
 
 AdbServer.prototype.logcat_raw = function(callback) {
