@@ -61,6 +61,10 @@ select:focus {
   white-space: nowrap;
   background-color: #4F4F8e;
 }
+.loglines .loglines-fragment li.currentSearch {
+  white-space: nowrap;
+  background-color: #4F8e8e;
+}
 
 .loglines .loglines-fragment li {
   background-color: #1B1B1B;
@@ -120,7 +124,7 @@ select:focus {
   width: 120px;
   float: left;
 }
-.cmdline .action-dropup button {
+.cmdline .action-dropup button.btn-cmd-left {
   float: right;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -128,18 +132,83 @@ select:focus {
   padding-left: 5px;
   width: calc(100% - 10px);
 }
-.cmdline .action-dropup button span.name {
+.cmdline .action-dropup button.btn-cmd-left span.name {
   padding-right: 8px;
   padding-left: 4px;
 }
+.cmdline .action-dropup button.btn-cmd-preset {
+  float: left;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-left: 0;
+  padding-right: 5px;
+  width: calc(100% - 10px);
+}
+.cmdline .dropup-preset {
+  margin-left: -6px;
+}
+
+
 .cmdline .input {
-  width: calc(100% - 120px);
+  width: calc(100% - 120px - 240px);
   float: left;
 }
 /*.cmdline .input textarea*/
 
 .cmdline .input input[type="text"] {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  border-radius: 0;
   padding-left: 3px;
+}
+
+.cmdline .dropup-preset .btn-tagged {
+  float: left;
+}
+
+
+
+.cmdline .dropup-tagged > .dropdown-menu,
+.cmdline .dropup-preset > .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
+/* taken from http://bootsnipp.com/snippets/featured/multi-level-dropdown-menu-bs3 and modified */
+.dropdown-submenu {
+    position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+    left: -100%;
+    right: 100%;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: left;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-left: -10px;
+}
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+.dropdown-submenu.pull-right {
+    float: none;
+}
+.dropdown-submenu.pull-right>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
 }

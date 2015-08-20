@@ -14,11 +14,22 @@
 
 	var allLogLines = [];
 	var customTaggedLines = {};
+	var lastSearchLine = {};
 }
 
 emitter.on('FilterCmd', function(cmd) {
-	cmdl.currentCmd = cmdl.currentFilterCmd = cmd;
 	llfrag.logsToShow = cmdl.currentFilterCmd.execute(allLogLines);
+	llfrag.redraw(true);
+});
+
+emitter.on('SearchCmd', function(cmd, lastSearchArgs) {
+	lastSearchLine.currentSearch = undefined;
+	var matchIndex = cmdl.currentSearchCmd.execute(llfrag.logsToShow, lastSearchArgs);
+	if (!matchIndex)
+		return;
+	emitter.emit('clickUnSelectAll', matchIndex);
+	lastSearchLine = allLogLines[matchIndex];
+	llfrag.scrollToLine(matchIndex);
 	llfrag.redraw(true);
 });
 
@@ -36,12 +47,12 @@ emitter.on('ctrlClickSelect', function(id) {
 
 emitter.on('clickUnSelectAll', function(id) {
 	var id = parseInt(id);
-	var alreadySelected = !!allLogLines[id].customTag;
+	var wasSelected = customTaggedLines[id];
 	Object.keys(customTaggedLines).forEach(function(e) {
 		allLogLines[parseInt(e)].customTag = undefined;
 	});
 	customTaggedLines = {};
-	if (!alreadySelected) {
+	if (!wasSelected) {
 		allLogLines[id].customTag = 'customTag';
 		customTaggedLines[id] = allLogLines[id];
 	}

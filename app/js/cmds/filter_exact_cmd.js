@@ -1,12 +1,19 @@
-var FilterCmd = require('./cmd.js');
+var FilterCmd = require('./filter_cmd.js');
 
 FilterExactCmd.prototype = Object.create(FilterCmd.prototype);
 function FilterExactCmd(symbol, name) {
 	FilterCmd.call(this, symbol, name);
+	this.args = "";
 }
+FilterExactCmd.prototype.toString = function() {
+	return (this.symbol + this.args.toString());
+};
 FilterExactCmd.prototype.setArgs = function(args) {
-	this.checkCase = !!args.match(/\/c$/);
-	this.args = args.replace(/\/c$/, "");
+	if (this.args != args) {
+		this.checkCase = !!args.match(/\/c$/);
+		this.args = args.replace(/\/c$/, "");
+		this.addToMemory(this.args);
+	}
 };
 FilterExactCmd.prototype.doesMatch = function(line) {
 	line = (line.buffer+" "+

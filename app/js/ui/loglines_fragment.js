@@ -74,13 +74,14 @@ LoglinesFragment.prototype.redraw = function (doForce) {
 		this.content.scrollTop = this.content.scrollHeight;
 }
 LoglinesFragment.prototype.makeHTML = function() {
-	var html = '', c = null, ctag = null;
+	var html = '', c = null, ctag = null, csearch;
 	for (var i = this.start_tr; i < this.end_tr; i++) {
 		c = this.logsToShow[i];
 		ctag = (!!c.customTag) ? "customTag" : "";
+		csearch = (!!c.currentSearch) ? "currentSearch" : "";
 		html +=
 			'<li id="'+c.index+
-			'" class="logline level-'+c.level+' '+ctag+'">'+
+			'" class="logline level-'+c.level+' '+ctag+' '+csearch+'">'+
                 '<span class="index">'+c.index+'</span>'+
                 '<span class="buffer">'+c.buffer[0]+'</span>'+
                 '<span class="date">'+c.month+'-'+c.day+'</span>'+
@@ -102,12 +103,23 @@ LoglinesFragment.prototype.registerClickListeners = function() {
 	$(".loglines .loglines-fragment ul li").on('click', function(e) {
 		if (window.event.ctrlKey) {
 			self.emitter.emit('ctrlClickSelect', $(this).attr("id"));
-			// $(this).toggleClass("customTag");
-		} else {
+		} else if (window.event.altKey) {
 			self.emitter.emit('clickUnSelectAll', $(this).attr("id"));
-			// $(this).toggleClass("customTag");
 		}
 	});
+};
+
+LoglinesFragment.prototype.scrollToLine = function(index) {
+	// $(".loglines .loglines-fragment ul li#"+index)
+	var indexToShow = this.getIndexToShow(index);
+	if (!indexToShow)
+		return;
+	this.content.scrollTop = indexToShow * this.trSizeY_px;
+};
+LoglinesFragment.prototype.getIndexToShow = function(index) {
+	for (var i = 0; i < this.logsToShow.length; i++)
+		if (this.logsToShow[i].index == index)
+			return i;
 };
 
 module.exports = LoglinesFragment;

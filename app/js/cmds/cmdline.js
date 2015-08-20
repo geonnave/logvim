@@ -8,7 +8,7 @@ function Cmdline(emitter) {
 
 	var self = this;
 	this.cmdInput = $(".cmdline .input input");
-	this.buttonName = $(".cmdline .action-dropup button span.name");
+	this.buttonName = $(".cmdline .dropup-left button span.name");
 
 	this.cmds = {
 		// ":": new cmds.ColonCmd(),
@@ -22,11 +22,11 @@ function Cmdline(emitter) {
 			'<li><a href="#" data-cmd="'+self.cmds[c].symbol+'">'+
 			self.cmds[c].name+'</a></li>';
 	}, "");
-	$(".cmdline .action-dropup ul").html(dropupMenuOptions);
+	$(".cmdline .dropup-left ul").html(dropupMenuOptions);
 
-	this.currentCmd = this.cmds["~"];
-	this.cmdInput.val(this.currentCmd.toString());
-	this.buttonName.text(this.currentCmd.name);
+	this.currentSelectedCmd = this.cmds["~"];
+	this.cmdInput.val(this.currentSelectedCmd.toString());
+	this.buttonName.text(this.currentSelectedCmd.name);
 
 	this.currentFilterCmd = this.cmds["~"];
 	this.currentSearchCmd = this.cmds["/"];
@@ -42,22 +42,50 @@ function Cmdline(emitter) {
 			switch(cmd) {
 			case "~":
 			case "=":
+				self.currentSelectedCmd = self.currentFilterCmd = self.cmds[cmd];
 				self.cmds[cmd].setArgs(input.slice(1));
 				self.emitter.emit('FilterCmd', self.cmds[cmd]);
 				break;
+			case "/":
+				self.currentSelectedCmd = self.currentSearchCmd = self.cmds[cmd];
+				var lastArgs = self.cmds[cmd].args;
+				self.cmds[cmd].setArgs(input.slice(1));
+				self.emitter.emit('SearchCmd', self.cmds[cmd], lastArgs);
+				break;
 			}
+		}
+	});
+	this.cmdInput.keydown(function(e) {
+		if (e.keyCode == 38 /*up*/) {
+			if (!self.currentSelectedCmd.hasPreviousMemory())
+				return;
+			if (!self.currentSelectedCmd.hasNextMemory())
+				// save the current input val; otherwise we will lost it
+				self.currentSelectedCmd.setArgs(self.cmdInput.val().slice(1));
+			self.currentSelectedCmd.gotoPreviousMemory();
+			self.cmdInput.val(self.currentSelectedCmd.toString());
+			self.buttonName.text(self.currentSelectedCmd.name);
+		} else if (e.keyCode == 40 /*down*/) {
+			if (!self.currentSelectedCmd.hasNextMemory())
+				return;
+			self.currentSelectedCmd.gotoNextMemory();
+			self.cmdInput.val(self.currentSelectedCmd.toString());
+			self.buttonName.text(self.currentSelectedCmd.name);
 		}
 	});
 
 	this.cmdInput.on('input', function() {
 		var key = self.cmdInput.val()[0];
-		if (key in self.cmds)
+		if (key in self.cmds) {
 			self.buttonName.text(self.cmds[key].name);
+			self.currentSelectedCmd = self.cmds[key];
+		}
 	});
 
-	$(".cmdline .action-dropup ul li > a").click(function(e) {
+	$(".cmdline .dropup-left ul li > a").click(function(e) {
 		var selected = $(this).data("cmd");
-		self.cmdInput.val(selected);
+		self.currentSelectedCmd = self.cmds[selected];
+		self.cmdInput.val(self.cmds[selected].toString());
 		self.buttonName.text($(this).text());
 		self.cmdInput.focus();
 	});
