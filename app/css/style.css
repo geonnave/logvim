@@ -1,6 +1,7 @@
 
-body {
+html, body {
   background-color: #3F3F3F;
+  height: 100%;
 }
 input {
   font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
@@ -16,115 +17,138 @@ input[type="text"]:focus {
 select:focus {
    outline-color: transparent;
 }
-
-.loglines {
-}
-.loglines .loglines-fragment {
-  /*width: 1600px;*/
-  height: 300px;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 95%%;
-  max-height: calc(100% - 50px);
-
-  max-width: 2000px;
-  overflow-y: scroll;
-  overflow-x: scroll;
-  background-color: #1B1B1B;
-}
-.loglines .description {
-  color: #CDCDCD;
-}
-
-.loglines .loglines-fragment ul.loglines-list-fragment {
-  max-width: 2000px;
+ul {
   margin: 0;
 }
-.loglines .loglines-fragment ul li {
-  height: 18px;
-  line-height: 18px;
-  font-size: 13px;
+li {
   list-style: none;
 }
 
-.loglines .loglines-fragment span:hover,
-.loglines .loglines-fragment li:hover {
+.header {
+  height: 40px;
+}
+.central-content {
+  position: relative;
+  height: calc(100% - 40px - 50px);
+}
+.footer {
+  position: absolute;
+  height: 50px;
+  width: 100%;
+}
+
+.fragment {
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+.loglines-fragment {
+  height: 100%;
+  width: 80%;
+  white-space: nowrap;
+  background-color: #1B1B1B;
+
+/*  position: absolute;
+  width: 100%;
+  max-height: calc(100% - 90px);
+  max-width: 2000px;*/
+}
+.dissector-fragment {
+  height: 100%;
+  width: 20%;
+  background-color: #1F1F1F;
+}
+
+.loglines-fragment .loglines {
+  width: 100%;
+}
+
+.loglines-fragment ul.loglines-list {
+  display: table-row; /* this is needed to set inner width to 100% of scrollable width */
+  max-width: 2000px;
+}
+.loglines-fragment ul li {
+  height: 18px;
+  line-height: 18px;
+  font-size: 13px;
+}
+
+.loglines-fragment span:hover,
+.loglines-fragment li:hover {
   background-color: #4F4F4F;
 }
-.loglines .loglines-fragment li.logline {
-  white-space: nowrap;
+.loglines-fragment li {
 }
-.loglines .loglines-fragment li.customTag {
-  white-space: nowrap;
+.loglines-fragment li.customTag {
   background-color: #4F4F8e;
 }
-.loglines .loglines-fragment li.currentSearch {
-  white-space: nowrap;
+.loglines-fragment li.isCurrentSearch {
   background-color: #4F8e8e;
 }
 
-.loglines .loglines-fragment li {
+.loglines-fragment li {
   background-color: #1B1B1B;
   color: #a3a3a3;
 }
-.loglines .loglines-fragment li.level-E {
+.loglines-fragment li.level-E {
   color: #ff5f5f;
 }
-.loglines .loglines-fragment li.level-W {
+.loglines-fragment li.level-W {
   color: #afd700;
 }
-.loglines .loglines-fragment li.level-D {
+.loglines-fragment li.level-D {
   color: #5fafd7;
 }
-.loglines .loglines-fragment li.level-I {
+.loglines-fragment li.level-I {
   color: #00af00;
 }
 
-.loglines .loglines-fragment .logline span {
+.loglines-fragment .logline span {
   display: inline-block;
   overflow-x: hidden;
   margin: 0 2px;
 }
-.loglines .loglines-fragment .logline span.index {
+.loglines-fragment .logline span.index {
   width: 50px;
 }
-.loglines .loglines-fragment .logline span.date {
+.loglines-fragment .logline span.date {
   width: 40px;
 }
-.loglines .loglines-fragment .logline span.time {
+.loglines-fragment .logline span.time {
   width: 90px;
 }
-.loglines .loglines-fragment .logline span.buffer {
+.loglines-fragment .logline span.buffer {
   width: 20px;
 }
-.loglines .loglines-fragment .logline span.tag {
+.loglines-fragment .logline span.tag {
   width: 200px;
 }
-.loglines .loglines-fragment .logline span.message {
+.loglines-fragment .logline span.message {
   /*max-width: 1500px;*/
 }
 
-.cmdline {
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
+.dissector-fragment li.event {
+  margin: 10px;
+  background: #a0a0a0;
 }
-.cmdline .highlight-cmd {
+.dissector-fragment li.event .title {
+  background: #afafaf;
+}
+
+.footer .cmdline {
+  margin-top: 10px;
+}
+.footer .highlight-cmd {
   height: 30px;
   width: 11px;
   position: absolute;
-  bottom: 0px;
   left: 121px;
   background-color: rgba(160, 160, 160, 0.52);
 }
-.cmdline .action-dropup {
+.footer .action-dropup {
   width: 120px;
   float: left;
 }
-.cmdline .action-dropup button.btn-cmd-left {
+.footer .action-dropup button.btn-cmd-left {
   float: right;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -132,11 +156,11 @@ select:focus {
   padding-left: 5px;
   width: calc(100% - 10px);
 }
-.cmdline .action-dropup button.btn-cmd-left span.name {
+.footer .action-dropup button.btn-cmd-left span.name {
   padding-right: 8px;
   padding-left: 4px;
 }
-.cmdline .action-dropup button.btn-cmd-preset {
+.footer .action-dropup button.btn-cmd-preset {
   float: left;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -144,30 +168,30 @@ select:focus {
   padding-right: 5px;
   width: calc(100% - 10px);
 }
-.cmdline .dropup-preset {
+.footer .dropup-preset {
   margin-left: -6px;
 }
 
 
-.cmdline .input {
+.footer .input {
   width: calc(100% - 120px - 240px);
   float: left;
 }
-/*.cmdline .input textarea*/
+/*.footer .input textarea*/
 
-.cmdline .input input[type="text"] {
+.footer .input input[type="text"] {
   border-radius: 0;
   padding-left: 3px;
 }
 
-.cmdline .dropup-preset .btn-tagged {
+.footer .dropup-preset .btn-tagged {
   float: left;
 }
 
 
 
-.cmdline .dropup-tagged > .dropdown-menu,
-.cmdline .dropup-preset > .dropdown-menu {
+.footer .dropup-tagged > .dropdown-menu,
+.footer .dropup-preset > .dropdown-menu {
   right: 0;
   left: auto;
 }
@@ -177,7 +201,7 @@ select:focus {
     position: relative;
 }
 .dropdown-submenu>.dropdown-menu {
-    left: -100%;
+    left: auto;
     right: 100%;
     -webkit-border-radius: 0 6px 6px 6px;
     -moz-border-radius: 0 6px 6px;

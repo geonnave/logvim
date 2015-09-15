@@ -7,79 +7,112 @@
   </head>
   <body>
     <div class="header">
-      <!-- <h1>Hello World!</h1> -->
-    </div>
-    <div class="loglines">
-      <!-- <div class="description">
-        Buffer | Date | Time | Tag | Message
-      </div> -->
-      <div class="loglines-fragment">
-        <div class="before-div"></div>
-        <ul class="loglines-list-fragment">
-        </ul>
-        <div class="after-div"></div>
+      <div class="pull-left buffer-type">
+        <button class="btn">Buffer Type</button>
+      </div>
+      <div class="pull-left logcat-control">
+        <button class="btn logcat-toggle">logcat</button>
       </div>
     </div>
-    <div class="cmdline">
-      <div class="highlight-cmd"></div>
-      <div class="dropup action-dropup dropup-left">
-        <button class="btn btn-default dropdown-toggle btn-cmd-left" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span class="caret"></span>
-          <span class="name">Filter</span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <li><a href="#">Filter</a></li>
+
+    <div class="central-content">
+      <div class="pull-left fragment loglines-fragment">
+        <div class="loglines">
+          <div class="before-div"></div>
+          <ul class="loglines-list">
+          </ul>
+          <div class="after-div"></div>
+        </div>
+      </div>
+      <div class="pull-left fragment dissector-fragment">
+        <ul class="dissector">
+          <li class="event">
+            <div class="title">connection</div>
+            <div class="contents">
+              <p>enter state1</p>
+              <p>exit state1</p>
+              <p>enter state2</p>
+            </div>
+          </li>
+          <li class="event">
+            <div class="title">disconnection</div>
+            <div class="contents">
+              <p>exit state2</p>
+              <p>exit state1</p>
+              <p>enter state0</p>
+            </div>
+          </li>
         </ul>
       </div>
-      <div class="input">
-        <input type="text">
-      </div>
-      <div class="right-options">
-        <div class="dropup action-dropup dropup-preset">
-          <button class="btn btn-default dropdown-toggle btn-cmd-preset" type="button" id="btn-preset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="name">Pre-sets</span>
+    </div>
+
+    <div class="footer">
+      <div class="cmdline">
+        <div class="highlight-cmd"></div>
+        <div class="dropup action-dropup dropup-left">
+          <button class="btn btn-default dropdown-toggle btn-cmd-left" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
+            <span class="name">Filter</span>
           </button>
-          <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="btn-preset">
-            <li class="dropdown-submenu">
-              <a tabindex="-1" href="#">optionsssssssssss</a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Second level</a></li>
-                <li><a href="#">Second level</a></li>
-              </ul>
-            </li>
-            <li class="dropdown-submenu">
-              <a tabindex="-1" href="#">Hover me for more options</a>
-              <ul class="dropdown-menu">
-                <li><a href="#">2levelllll 2levelllll2levelllll</a></li>
-                <li><a href="#">2levelllll</a></li>
-                <li><a href="#">2levelllll</a></li>
-                <li><a href="#">2levelllll</a></li>
-              </ul>
-            </li>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><a href="#">Filter</a></li>
           </ul>
         </div>
-        <div class="btn-tagged">
-          <div class="dropup action-dropup dropup-tagged">
-            <button class="btn btn-default dropdown-toggle btn-cmd-tagged" type="button" id="btn-tagged" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="name">Tagged</span>
+
+        <div class="input">
+          <input type="text">
+        </div>
+
+        <div class="right-options">
+          <div class="dropup action-dropup dropup-preset">
+            <button class="btn btn-default dropdown-toggle btn-cmd-preset" type="button" id="btn-preset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="name">Pre-sets</span>
               <span class="caret"></span>
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <li><a href="#">25 m 01-01 23:43:28.040 BluetoothOppNotificatio</a></li>
-              <li><a href="#">25 m 01-01 23:43:28.040 BluetoothOppNotificatio</a></li>
-              <li><a href="#">25 m 01-01 23:43:28.040 BluetoothOppNotificatio</a></li>
-              <li><a href="#">25 m 01-01 23:43:28.040 BluetoothOppNotificatio</a></li>
+            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="btn-preset">
+              <li class="dropdown-submenu">
+                <a tabindex="-1" href="#">wifi</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">wifi|wpa|wlan</a></li>
+                  <li><a href="#">WifiStateMachine</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a tabindex="-1" href="#">data</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">SETUP_DATA_CALL</a></li>
+                  <li><a href="#">DEACTIVATE_DATA_CALL</a></li>
+                  <li><a href="#">OUTRO_FILTRO_SUPIMPA_DE_DATA</a></li>
+                </ul>
+              </li>
             </ul>
+          </div>
+          <div class="btn-tagged">
+            <div class="dropup action-dropup dropup-tagged">
+              <button class="btn btn-default dropdown-toggle btn-cmd-tagged" type="button" id="btn-tagged" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="name">Tagged</span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li><a href="#">25 m 01-01 23:43:28.040 BluetoothOppNotificatio</a></li>
+                <li><a href="#">25 m 01-01 23:43:28.040 BluetoothOppNotificatio</a></li>
+                <li><a href="#">25 m 01-01 23:43:28.040 BluetoothOppNotificatio</a></li>
+                <li><a href="#">25 m 01-01 23:43:28.040 BluetoothOppNotificatio</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
+
       <div class="status"></div>
-    </div>
+    </div> <!-- div class="footer" -->
+
+
+
     <script>
-      window.$ = window.jQuery = require('./vendor/js/jquery.js')
-      require('./vendor/js/bootstrap.js')
-      require('./js/main.js')
+      window.$ = window.jQuery = require('./vendor/js/jquery.js');
+      require('./vendor/js/bootstrap.js');
+      require('./js/main.js');
     </script>
   </body>
 </html>
