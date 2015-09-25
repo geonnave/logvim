@@ -1,28 +1,32 @@
 
-function DissectorFragment(myDocument, emitter) {
-	this.emitter = emitter;
-
-	this.content = myDocument.querySelector(".dissector-fragment");
-
+function DissectorFragment(myDocument) {
+	this.content = myDocument.querySelector(".dissector-fragment ul");
 }
 
-DissectorFragment.prototype.addTitledEvent = function(event) {
+DissectorFragment.prototype.appendEvent = function(event) {
+	if (event.title)
+		this.content.innerHTML += this.genTitledEvent(event);
+	else
+		this.content.innerHTML += this.genSimpleEvent(event);
+};
+DissectorFragment.prototype.reset = function() {
+	this.content.innerHTML = "";
+};
+
+DissectorFragment.prototype.genTitledEvent = function(event) {
 	return (
-	'<li class="event">'+
-		'<div class="title">'+event.title+'</div>'+
+	'<li class="event" style="background: '+event.color+'">'+
+		'<div class="title" style="background: '+event.title_color+'">'+event.title+'</div>'+
 		'<div class="contents">'+
 			event.labels.reduce(function(p, c) {
-				return p+'<p>'+c.label+'</p>';
+				return p+'<p id="'+c.id+'">'+c.label+'</p>';
 			}, "") +
-			'<p>enter state1</p>'+
-			'<p>exit state1</p>'+
-			'<p>enter state2</p>'+
 		'</div>' +
 	'</li>');
 };
-DissectorFragment.prototype.addSimpleEvent = function(event) {
+DissectorFragment.prototype.genSimpleEvent = function(event) {
 	return (
-	'<li class="event">'+
+	'<li class="event" style="background: '+event.color+'">'+
 			'<p>'+event.label+'</p>'+
 	'</li>');
 };

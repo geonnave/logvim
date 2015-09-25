@@ -77,15 +77,6 @@ li {
   background-color: #4F4F4F;
 }
 .loglines-fragment li {
-}
-.loglines-fragment li.customTag {
-  background-color: #4F4F8e;
-}
-.loglines-fragment li.isCurrentSearch {
-  background-color: #4F8e8e;
-}
-
-.loglines-fragment li {
   background-color: #1B1B1B;
   color: #a3a3a3;
 }
@@ -100,6 +91,15 @@ li {
 }
 .loglines-fragment li.level-I {
   color: #00af00;
+}
+.loglines-fragment li.isDissected {
+  background-color: #45381B; /*#563B52; #452E1B; */
+}
+.loglines-fragment li.isCurrentSearch {
+  background-color: #385152;
+}
+.loglines-fragment li.isBookmarked {
+  background-color: #4F4F8e;
 }
 
 .loglines-fragment .logline span {
@@ -129,9 +129,22 @@ li {
 .dissector-fragment li.event {
   margin: 10px;
   background: #a0a0a0;
+  border-radius: 4px;
 }
 .dissector-fragment li.event .title {
   background: #afafaf;
+  border-radius: 4px;
+  text-align: center;
+}
+.dissector-fragment li.event .contents {
+}
+.dissector-fragment li.event p {
+  margin: 0;
+  padding-left: 4px;
+}
+.dissector-fragment li.event p:hover {
+  background-color: rgba(255,255,255,0.2);
+  cursor: pointer;
 }
 
 .footer .cmdline {

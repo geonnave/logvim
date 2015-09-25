@@ -1,0 +1,9 @@
+task default: %w[test]
+
+task :test do
+	ruby "test/ts_machineizer.rb"
+end
+
+task :wpa do
+	ruby "test/tc_wpa_supp_sm.rb"
+end

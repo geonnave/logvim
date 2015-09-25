@@ -59,7 +59,7 @@ CmdlineController.prototype.registerInputListeners = function() {
 			case "=":
 				self.currentSelectedCmd = self.currentFilterCmd = self.cmds[cmd];
 				self.cmds[cmd].setArgs(input.slice(1));
-				self.emitter.emit('FilterCmd', self.cmds[cmd]);
+				self.emitter.emit('FilterCmd', self.currentFilterCmd.execute);
 				break;
 			case "/":
 				self.currentSelectedCmd = self.currentSearchCmd = self.cmds[cmd];

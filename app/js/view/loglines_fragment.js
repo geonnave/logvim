@@ -1,13 +1,13 @@
 
-function LoglinesFragment(myDocument) {
-	console.log("llFrag");
+function LoglinesFragment(myDocument, myModel) {
+	this.myModel = myModel;
+
 	this.content = myDocument.querySelector(".central-content .loglines-fragment");
 	this.beforeDiv = myDocument.querySelector(".loglines-fragment .before-div");
 	this.afterDiv = myDocument.querySelector(".loglines-fragment .after-div");
 	this.listFragment = myDocument.querySelector(".loglines-fragment .loglines-list");
 
 	this.autoScroll = false;
-	this.logsToShow = [];
 	this.lastRedraw = Date.now();
 
 	this.measureFragmentSizes();
@@ -26,7 +26,7 @@ LoglinesFragment.prototype.measureFragmentSizes = function () {
 	// sizes and offsets in trs (table-rows)
 	this.scrollY_tr = Math.floor(this.scrollY_px/this.trSizeY_px);
 	this.contentYSize_tr = Math.ceil(this.contentYSize_px/this.trSizeY_px);
-	this.allPossibleTRs_tr = this.logsToShow.length;
+	this.allPossibleTRs_tr = this.myModel.logsToShow.length;
 
 	this.sizeYOfAllPossibleTRs_px = this.allPossibleTRs_tr * this.trSizeY_px;
 
@@ -34,12 +34,12 @@ LoglinesFragment.prototype.measureFragmentSizes = function () {
 	// current scroll offset
 	this.start_tr = this.scrollY_tr;
 	this.end_tr = this.scrollY_tr + this.contentYSize_tr;
-	if (this.end_tr >= this.logsToShow.length) {
-		this.end_tr = this.logsToShow.length;
-		if (this.logsToShow.length-this.contentYSize_tr >= 0)
-			this.start_tr = this.logsToShow.length - this.contentYSize_tr;
-		else
-			this.start_tr = 0;
+	if (this.end_tr >= this.myModel.logsToShow.length) {
+		this.end_tr = this.myModel.logsToShow.length;
+		// if (this.myModel.logsToShow.length-this.contentYSize_tr >= 0)
+		// 	this.start_tr = this.myModel.logsToShow.length - this.contentYSize_tr;
+		// else
+		// 	this.start_tr = 0;
 	}
 }
 
@@ -65,14 +65,14 @@ LoglinesFragment.prototype.redraw = function (doForce) {
 LoglinesFragment.prototype.makeHTML = function() {
 	var html = '';
 	for (var i = this.start_tr; i < this.end_tr; i++)
-		html += this.logsToShow[i].toHTML();
+		html += this.myModel.logsToShow[i].toHTML();
 	return html;
 }
 LoglinesFragment.prototype.getBeforeHeight = function() {
 	return (this.start_tr * this.trSizeY_px)+"px";
 }
 LoglinesFragment.prototype.getAfterHeight = function() {
-	return ((this.logsToShow.length - this.end_tr) * this.trSizeY_px)+"px";
+	return ((this.myModel.logsToShow.length - this.end_tr) * this.trSizeY_px)+"px";
 }
 
 LoglinesFragment.prototype.scrollToLine = function(index) {
@@ -83,8 +83,8 @@ LoglinesFragment.prototype.scrollToLine = function(index) {
 	this.content.scrollTop = indexToShow * this.trSizeY_px;
 };
 LoglinesFragment.prototype.getIndexToShow = function(index) {
-	for (var i = 0; i < this.logsToShow.length; i++)
-		if (this.logsToShow[i].index == index)
+	for (var i = 0; i < this.myModel.logsToShow.length; i++)
+		if (this.myModel.logsToShow[i].index == index)
 			return i;
 };
 

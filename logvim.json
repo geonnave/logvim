@@ -1,0 +1,28 @@
+{
+	"__comment__": "attention: *for now*, it is *necessary* to indicate the *absolute path* of logvim installation; this shall not be needed on future",
+	"logvim_path": "/home/geovane.fedrecheski/work/conn-server/logvim",
+
+	"dissectors": {
+		"wifi-dissector": {
+			"type": "executable",
+			"application_name": "wifi-dissector.exe",
+			"params": []
+		},
+		"dummy": {
+			"type": "executable",
+			"application_name": "dummy.exe",
+			"params": []
+		},
+		"gps-dissector": {
+			"type": "java",
+			"application_name": "gps-dissector.jar",
+			"command": "java -jar",
+			"params": []
+		},
+		"ims-dissector": {
+			"type": "js",
+			"application_name": "ims-dissector.js",
+			"params": []
+		}
+	}
+}

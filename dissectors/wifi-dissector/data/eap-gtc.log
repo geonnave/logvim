@@ -1,0 +1,114 @@
+07-20 17:13:11.653 D/wpa_supplicant(11906): EAPOL: SUPP_PAE entering state DISCONNECTED
+07-20 17:13:11.653 D/wpa_supplicant(11906): EAPOL: KEY_RX entering state NO_KEY_RECEIVE
+07-20 17:13:11.653 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state INITIALIZE
+07-20 17:13:11.653 D/wpa_supplicant(11906): EAP: EAP entering state DISABLED
+07-20 17:13:11.860 D/wpa_supplicant(11906): EAPOL: SUPP_PAE entering state DISCONNECTED
+07-20 17:13:11.860 D/wpa_supplicant(11906): EAPOL: KEY_RX entering state NO_KEY_RECEIVE
+07-20 17:13:11.860 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state INITIALIZE
+07-20 17:13:11.860 D/wpa_supplicant(11906): EAP: EAP entering state DISABLED
+07-20 17:13:11.873 D/WifiStateMachine(  711): invokeExitMethods: InitialState
+07-20 17:13:11.873 D/WifiStateMachine(  711): invokeEnterMethods: SupplicantStartingState
+07-20 17:13:11.974 D/WifiStateMachine(  711): invokeExitMethods: SupplicantStartingState
+07-20 17:13:11.974 D/WifiStateMachine(  711): invokeEnterMethods: SupplicantStartedState
+07-20 17:13:11.976 D/WifiStateMachine(  711): invokeEnterMethods: DriverStartedStateExt
+07-20 17:13:11.976 D/WifiStateMachine(  711): invokeEnterMethods: DriverStartedState
+07-20 17:13:11.985 D/WifiStateMachine(  711): invokeEnterMethods: ConnectModeState
+07-20 17:13:11.985 D/WifiStateMachine(  711): invokeEnterMethods: DisconnectedState
+07-20 17:13:12.721 D/wpa_supplicant(11906): EAPOL: SUPP_PAE entering state CONNECTING
+07-20 17:13:12.721 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state IDLE
+07-20 17:13:12.721 D/wpa_supplicant(11906): EAP: EAP entering state INITIALIZE
+07-20 17:13:12.721 D/wpa_supplicant(11906): EAP: EAP entering state IDLE
+07-20 17:13:12.727 D/wpa_supplicant(11906): EAPOL: SUPP_PAE entering state RESTART
+07-20 17:13:12.727 D/wpa_supplicant(11906): EAP: EAP entering state INITIALIZE
+07-20 17:13:12.727 D/wpa_supplicant(11906): EAP: EAP entering state IDLE
+07-20 17:13:12.727 D/wpa_supplicant(11906): EAPOL: SUPP_PAE entering state AUTHENTICATING
+07-20 17:13:12.727 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state REQUEST
+07-20 17:13:12.727 D/wpa_supplicant(11906): EAP: EAP entering state RECEIVED
+07-20 17:13:12.727 D/wpa_supplicant(11906): EAP: EAP entering state IDENTITY
+07-20 17:13:12.727 D/wpa_supplicant(11906): EAP: EAP entering state SEND_RESPONSE
+07-20 17:13:12.727 D/wpa_supplicant(11906): EAP: EAP entering state IDLE
+07-20 17:13:12.727 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RESPONSE
+07-20 17:13:12.727 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RECEIVE
+07-20 17:13:12.742 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state REQUEST
+07-20 17:13:12.742 D/wpa_supplicant(11906): EAP: EAP entering state RECEIVED
+07-20 17:13:12.742 D/wpa_supplicant(11906): EAP: EAP entering state GET_METHOD
+07-20 17:13:12.743 D/wpa_supplicant(11906): EAP: EAP entering state METHOD
+07-20 17:13:12.743 D/wpa_supplicant(11906): EAP: EAP entering state SEND_RESPONSE
+07-20 17:13:12.743 D/wpa_supplicant(11906): EAP: EAP entering state IDLE
+07-20 17:13:12.743 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RESPONSE
+07-20 17:13:12.743 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RECEIVE
+07-20 17:13:12.777 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state REQUEST
+07-20 17:13:12.777 D/wpa_supplicant(11906): EAP: EAP entering state RECEIVED
+07-20 17:13:12.777 D/wpa_supplicant(11906): EAP: EAP entering state METHOD
+07-20 17:13:12.777 D/wpa_supplicant(11906): EAP: EAP entering state SEND_RESPONSE
+07-20 17:13:12.777 D/wpa_supplicant(11906): EAP: EAP entering state IDLE
+07-20 17:13:12.777 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RESPONSE
+07-20 17:13:12.777 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RECEIVE
+07-20 17:13:12.812 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state REQUEST
+07-20 17:13:12.812 D/wpa_supplicant(11906): EAP: EAP entering state RECEIVED
+07-20 17:13:12.812 D/wpa_supplicant(11906): EAP: EAP entering state METHOD
+07-20 17:13:12.812 D/wpa_supplicant(11906): EAP: EAP entering state SEND_RESPONSE
+07-20 17:13:12.812 D/wpa_supplicant(11906): EAP: EAP entering state IDLE
+07-20 17:13:12.812 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RESPONSE
+07-20 17:13:12.812 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RECEIVE
+07-20 17:13:12.838 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state REQUEST
+07-20 17:13:12.838 D/wpa_supplicant(11906): EAP: EAP entering state RECEIVED
+07-20 17:13:12.838 D/wpa_supplicant(11906): EAP: EAP entering state METHOD
+07-20 17:13:12.871 D/wpa_supplicant(11906): EAP: EAP entering state SEND_RESPONSE
+07-20 17:13:12.871 D/wpa_supplicant(11906): EAP: EAP entering state IDLE
+07-20 17:13:12.872 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RESPONSE
+07-20 17:13:12.872 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RECEIVE
+07-20 17:13:12.882 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state REQUEST
+07-20 17:13:12.882 D/wpa_supplicant(11906): EAP: EAP entering state RECEIVED
+07-20 17:13:12.882 D/wpa_supplicant(11906): EAP: EAP entering state METHOD
+07-20 17:13:12.883 D/wpa_supplicant(11906): EAP: EAP entering state SEND_RESPONSE
+07-20 17:13:12.883 D/wpa_supplicant(11906): EAP: EAP entering state IDLE
+07-20 17:13:12.883 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RESPONSE
+07-20 17:13:12.883 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RECEIVE
+07-20 17:13:12.890 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state REQUEST
+07-20 17:13:12.890 D/wpa_supplicant(11906): EAP: EAP entering state RECEIVED
+07-20 17:13:12.890 D/wpa_supplicant(11906): EAP: EAP entering state METHOD
+07-20 17:13:12.890 D/wpa_supplicant(11906): EAP: EAP entering state SEND_RESPONSE
+07-20 17:13:12.890 D/wpa_supplicant(11906): EAP: EAP entering state IDLE
+07-20 17:13:12.890 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RESPONSE
+07-20 17:13:12.890 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RECEIVE
+07-20 17:13:12.900 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state REQUEST
+07-20 17:13:12.900 D/wpa_supplicant(11906): EAP: EAP entering state RECEIVED
+07-20 17:13:12.900 D/wpa_supplicant(11906): EAP: EAP entering state METHOD
+07-20 17:13:12.901 D/wpa_supplicant(11906): EAP: EAP entering state SEND_RESPONSE
+07-20 17:13:12.901 D/wpa_supplicant(11906): EAP: EAP entering state IDLE
+07-20 17:13:12.901 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RESPONSE
+07-20 17:13:12.901 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RECEIVE
+07-20 17:13:12.912 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state REQUEST
+07-20 17:13:12.912 D/wpa_supplicant(11906): EAP: EAP entering state RECEIVED
+07-20 17:13:12.912 D/wpa_supplicant(11906): EAP: EAP entering state METHOD
+07-20 17:13:12.912 D/wpa_supplicant(11906): EAP: EAP entering state SEND_RESPONSE
+07-20 17:13:12.912 D/wpa_supplicant(11906): EAP: EAP entering state IDLE
+07-20 17:13:12.912 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RESPONSE
+07-20 17:13:12.913 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RECEIVE
+07-20 17:13:12.919 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state REQUEST
+07-20 17:13:12.919 D/wpa_supplicant(11906): EAP: EAP entering state RECEIVED
+07-20 17:13:12.920 D/wpa_supplicant(11906): EAP: EAP entering state SUCCESS
+07-20 17:13:12.920 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state RECEIVE
+07-20 17:13:12.920 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state SUCCESS
+07-20 17:13:12.920 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state IDLE
+07-20 17:13:12.941 D/wpa_supplicant(11906): EAPOL: SUPP_PAE entering state AUTHENTICATED
+07-20 17:13:12.986 D/WifiStateMachine(  711): invokeExitMethods: DisconnectedState
+07-20 17:13:12.997 D/WifiStateMachine(  711): invokeEnterMethods: L2ConnectedState
+07-20 17:13:13.021 D/WifiStateMachine(  711): invokeEnterMethods: ObtainingIpState
+07-20 17:13:13.106 D/WifiStateMachine(  711): invokeExitMethods: ObtainingIpState
+07-20 17:13:13.106 D/WifiStateMachine(  711): invokeEnterMethods: ConnectedState
+07-20 17:13:20.106 D/WifiStateMachine(  711): invokeExitMethods: ConnectedState
+07-20 17:13:20.109 D/WifiStateMachine(  711): invokeExitMethods: L2ConnectedState
+07-20 17:13:20.228 D/WifiStateMachine(  711): invokeExitMethods: ConnectModeState
+07-20 17:13:20.228 D/WifiStateMachine(  711): invokeExitMethods: DriverStartedState
+07-20 17:13:20.248 D/WifiStateMachine(  711): invokeExitMethods: DriverStartedStateExt
+07-20 17:13:20.248 D/WifiStateMachine(  711): invokeEnterMethods: WaitForP2pDisableState
+07-20 17:13:20.260 D/WifiStateMachine(  711): invokeExitMethods: WaitForP2pDisableState
+07-20 17:13:20.260 D/WifiStateMachine(  711): invokeExitMethods: SupplicantStartedState
+07-20 17:13:20.261 D/WifiStateMachine(  711): invokeEnterMethods: SupplicantStoppingState
+07-20 17:13:20.465 D/wpa_supplicant(11906): EAPOL: SUPP_PAE entering state DISCONNECTED
+07-20 17:13:20.466 D/wpa_supplicant(11906): EAPOL: SUPP_BE entering state INITIALIZE
+07-20 17:13:20.466 D/wpa_supplicant(11906): EAP: EAP entering state DISABLED
+07-20 17:13:20.761 D/WifiStateMachine(  711): invokeExitMethods: SupplicantStoppingState
+07-20 17:13:20.761 D/WifiStateMachine(  711): invokeEnterMethods: InitialState

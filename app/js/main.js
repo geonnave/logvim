@@ -1,85 +1,127 @@
 
 {
-	var spawn = require('child_process').spawn;
 	var fs = require('fs');
-
-	var AdbServer = require('./model/adb.js');
-	var createLogLine = require('./model/logline_factory.js');
-
-	var LoglinesFragment = require('./view/loglines_fragment.js');
-	var TopMenuController = require('./controller/top_menu_controller.js');
-
-	var HeaderController = require('./controller/header_controller.js');
-	var CmdlineController = require('./controller/cmdline_controller.js');
-	var LoglinesController = require('./controller/loglines_controller.js');
 
 	var emitter = new (require('events').EventEmitter);
 
-	var adb = new AdbServer();
-	var llFrag = new LoglinesFragment(document);
+	var AdbServer = require('./model/adb.js');
+	var createLogLine = require('./model/logline_factory.js');
+	
+	var TopMenuController = require('./controller/top_menu_controller.js');
 
-	var llCtrl = new LoglinesController(emitter, llFrag);
+	var LoglinesController = require('./controller/loglines_controller.js');
+	var DissectorController = require('./controller/dissector_controller.js');
+
+	var HeaderController = require('./controller/header_controller.js');
+	var CmdlineController = require('./controller/cmdline_controller.js');
+
+	var adb = new AdbServer();
+
+	var llCtrl = new LoglinesController(emitter);
+	var dissCtrl = new DissectorController(emitter);
 
 	var topMenuCtrl = new TopMenuController(emitter);
 	var cmdlCtrl = new CmdlineController(emitter);
 	var headerCtrl = new HeaderController(emitter);
-
-	var allLogLines = [];
-	var customTaggedLines = {};
-	var lastSearchLine = {};
+	headerCtrl.registerDissectors(dissCtrl.model.dissectorNames);
 
 	var isRunning = false;
 	var hasJustStopped = false;
 }
 
-emitter.on('FilterCmd', function(cmd) {
-	llFrag.logsToShow = cmdlCtrl.currentFilterCmd.execute(allLogLines);
-	llCtrl.redraw(true);
+emitter.on('newLogLine', function(line) {
+	llCtrl.addLogLine(line);
+	if (cmdlCtrl.currentFilterCmd.doesMatch(line))
+		llCtrl.model.logsToShow.push(line);
+	emitter.emit('doDissectLogLine', line.index);
+})
+
+emitter.on('clickDissector', function(dsName) {
+	if (dissCtrl.dissectorsLoader.running == dsName) {
+		console.log("should stop "+dsName);
+		dissCtrl.stop(dsName);
+	} else {
+		console.log("should start "+dsName);
+		dissCtrl.start(dsName);
+	}
+});
+
+emitter.on('startDissector', function(dsName) {
+	console.log(dsName);
+});
+
+emitter.on('stopDissector', function(dsName) {
+	console.log(dsName);
+});
+
+emitter.on('doDissectLogLine', function(index) {
+	// console.log("should dissect "+index);
+
+	if (!dissCtrl.dissectorsLoader.running) {
+		dissCtrl.model.logsToDissect.push(index);
+		return;
+	}
+
+	// dissect all lines that weren't before..
+	while (dissCtrl.model.logsToDissect.length > 0)
+		dissCtrl.dissect(dissCtrl.model.logsToDissect.shift());
+
+	dissCtrl.dissect(llCtrl.model.allLogLines[index]);
+})
+
+emitter.on('dissectedLogLine', function(index) {
+	llCtrl.model.allLogLines[index].isDissected = "isDissected";
+});
+
+emitter.on('scrollLogLine', function(index) {
+	llCtrl.fragment.scrollToLine(index);
+});
+
+emitter.on('FilterCmd', function(callback) {
+	llCtrl.applyFilter(cmdlCtrl.currentFilterCmd.execute(llCtrl.model.allLogLines));
 });
 
 emitter.on('SearchCmd', function(cmd, lastSearchArgs) {
-	lastSearchLine.isCurrentSearch = undefined;
-	var matchIndex = cmdlCtrl.currentSearchCmd.execute(llFrag.logsToShow, lastSearchArgs);
+	llCtrl.model.lastSearchedLine.isCurrentSearch = undefined;
+	var matchIndex = cmdlCtrl.currentSearchCmd.execute(llCtrl.model.logsToShow, lastSearchArgs);
 	if (!matchIndex)
 		return;
-	emitter.emit('clickUnSelectAll', matchIndex);
-	lastSearchLine = allLogLines[matchIndex];
-	llFrag.scrollToLine(matchIndex);
-	llCtrl.redraw(false);
+	llCtrl.model.allLogLines[matchIndex].isCurrentSearch = "isCurrentSearch";
+	llCtrl.model.lastSearchedLine = llCtrl.model.allLogLines[matchIndex];
+	llCtrl.fragment.scrollToLine(matchIndex);
+	llCtrl.redraw(true);
 });
 
 emitter.on('ctrlClickSelect', function(id) {
 	var id = parseInt(id);
-	if (allLogLines[id].customTag) {
-		allLogLines[id].customTag = undefined;
-		customTaggedLines[id] = undefined;
+	if (llCtrl.model.allLogLines[id].isBookmarked) {
+		llCtrl.model.allLogLines[id].isBookmarked = undefined;
+		llCtrl.model.bookmarkedLines[id] = undefined;
 	} else {
-		allLogLines[id].customTag = 'customTag';
-		customTaggedLines[id] = allLogLines[id];
+		llCtrl.model.allLogLines[id].isBookmarked = 'isBookmarked';
+		llCtrl.model.bookmarkedLines[id] = llCtrl.model.allLogLines[id];
 	}
 	llCtrl.redraw(true);
-	stopLogcat();
 });
 
 emitter.on('clickUnSelectAll', function(id) {
 	var id = parseInt(id);
-	var wasSelected = customTaggedLines[id];
-	Object.keys(customTaggedLines).forEach(function(e) {
-		allLogLines[parseInt(e)].customTag = undefined;
+	var wasSelected = llCtrl.model.bookmarkedLines[id];
+	Object.keys(llCtrl.model.bookmarkedLines).forEach(function(e) {
+		llCtrl.model.allLogLines[parseInt(e)].isBookmarked = undefined;
 	});
-	customTaggedLines = {};
+	llCtrl.model.bookmarkedLines = {};
 	if (!wasSelected) {
-		allLogLines[id].customTag = 'customTag';
-		customTaggedLines[id] = allLogLines[id];
+		llCtrl.model.allLogLines[id].isBookmarked = 'isBookmarked';
+		llCtrl.model.bookmarkedLines[id] = llCtrl.model.allLogLines[id];
 	}
 	llCtrl.redraw(true);
-	startLogcat();
 });
 
 emitter.on('saveLog', function(fileName) {
 	fs.writeFile(
 		fileName,
-		allLogLines.reduce(function(p, c) {
+		llCtrl.model.allLogLines.reduce(function(p, c) {
 			return p+c.toStringAll()+'\n';
 		}, ""),
 		function (err) {
@@ -89,15 +131,14 @@ emitter.on('saveLog', function(fileName) {
 });
 
 emitter.on('openLog', function(fileName) {
-	console.log('called openLog for: '+fileName);
 	stopLogcat();
+	clearLogLines();
 	fs.readFileSync(fileName.toString()).toString().split('\n').forEach(function(line) {
-		line = createLogLine(line);
-		line.index = allLogLines.length;
-		allLogLines.push(line);
-		if (cmdlCtrl.currentFilterCmd.doesMatch(line))
-			llFrag.logsToShow.push(line);
+		if (!(line = createLogLine(line)))
+			return;
+		emitter.emit('newLogLine', line);
 	});
+	console.log('read '+llCtrl.model.allLogLines.length+' lines from: '+fileName);
 	llCtrl.redraw(true);
 });
 
@@ -118,19 +159,15 @@ function startLogcat() {
 		hasJustStopped = false;
 	}
 	adb.startLogcat(function(line) {
-		line.index = allLogLines.length;
-		allLogLines.push(line);
-		if (cmdlCtrl.currentFilterCmd.doesMatch(line)) {
-			llFrag.logsToShow.push(line);
-			llCtrl.redraw(false);
-		}
+		emitter.emit('newLogLine', line);
+		llCtrl.redraw(false);
 	});
 	isRunning = true;
 }
 
 function clearLogLines() {
-	allLogLines = [];
-	llFrag.logsToShow = [];
+	llCtrl.model.allLogLines = [];
+	llCtrl.model.logsToShow = [];
 }
 
-startLogcat();
+// startLogcat();

@@ -13,8 +13,9 @@ function LogLine(line) {
     this.tag = line["tag"];
     this.message = line["message"];
 
-    this.customTag = undefined;
-    this.currentSearch = undefined;
+    this.isBookmarked = undefined;
+    this.isCurrentSearch = undefined;
+    this.isDissected = undefined;
 }
 
 LogLine.prototype.toString = function(opts) {
@@ -34,8 +35,9 @@ LogLine.prototype.toStringAll = function() {
 
 LogLine.prototype.toHTML = function() {
 	return '<li id="'+(this.index || "")+'" '+
-			 'class="logline level-'+this.level+' '+
-					 (this.customTag || "")+' '+
+			 'class="logline level-'+(this.level || "")+' '+
+					 (this.isBookmarked || "")+' '+
+					 (this.isDissected || "")+' '+
 					 (this.isCurrentSearch || "")+'">'+
 				'<span class="index">'+(this.index || "")+'</span>'+
 	            '<span class="buffer">'+(this.buffer[0] || "")+'</span>'+

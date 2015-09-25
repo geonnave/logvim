@@ -9,7 +9,7 @@ var regex_v_time = /\s+([A-Z])\/(.*)\s?\(\s+(\d+)\): (.*)/;
 var regex_logcat_v_threadtime = new RegExp(regex_timestamp.source + regex_v_threadtime.source);
 var regex_logcat_v_time = new RegExp(regex_timestamp.source + regex_v_time.source);
 
-var regex_buffer = /main|system|radio|crash|events|kernel/i;
+var regex_buffer = /^(main|system|radio|crash|events|kernel)/i;
 
 /* This function acts like a Factory; it abstracts the different log message 
  *  formats, which are controlled by the following set of logcat verbose 

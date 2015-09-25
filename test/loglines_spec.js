@@ -1,9 +1,10 @@
 var expect = require("chai").expect;
-var Logline = require("../app/js/util/logline.js");
+var createLogLine = require("../app/js/model/logline_factory.js");
 
 describe('Logline', function() {
 	var line = "09-02 16:18:58.735  1893  1967 I GCoreUlr: Successfully inserted location";
-    var ll = new Logline('main', line);
+    var ll = createLogLine(line, 'main');
+
     describe('#Logline(buffer, message)', function() {
         it('should initialize correctly', function() {
             expect(ll).to.have.a.property('buffer', 'main');
@@ -18,7 +19,7 @@ describe('Logline', function() {
         });
         it('should have a correct toHTML method', function() {
         	ll.index = 321;
-            console.log(ll.toHTML());
+            // console.log(ll.toHTML());
         });
     });
 });

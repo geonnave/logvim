@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello World!</title>
+    <title>Logvim</title>
     <link href="vendor/css/bootstrap.css" media="screen" rel="stylesheet" type="text/css">
     <link href="css/style.css" media="screen" rel="stylesheet" type="text/css">
   </head>
@@ -12,6 +12,20 @@
       </div>
       <div class="pull-left logcat-control">
         <button class="btn logcat-toggle">logcat</button>
+      </div>
+      <div class="pull-left dissector-control">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            dissector
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -26,22 +40,6 @@
       </div>
       <div class="pull-left fragment dissector-fragment">
         <ul class="dissector">
-          <li class="event">
-            <div class="title">connection</div>
-            <div class="contents">
-              <p>enter state1</p>
-              <p>exit state1</p>
-              <p>enter state2</p>
-            </div>
-          </li>
-          <li class="event">
-            <div class="title">disconnection</div>
-            <div class="contents">
-              <p>exit state2</p>
-              <p>exit state1</p>
-              <p>enter state0</p>
-            </div>
-          </li>
         </ul>
       </div>
     </div>
